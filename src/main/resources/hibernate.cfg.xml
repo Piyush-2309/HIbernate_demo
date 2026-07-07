@@ -40,7 +40,9 @@
             update
         </property>
 
-        <mapping class="org.example.entity.employee"/>
+        <mapping class="org.example.entity.Employee"/>
+        <mapping class="org.example.entity.Certificates"/>
+
 
     </session-factory>
 

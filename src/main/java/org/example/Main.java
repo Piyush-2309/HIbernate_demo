@@ -1,8 +1,7 @@
 package org.example;
 
-import org.example.entity.employee;
+import org.example.entity.Employee;
 import org.example.util.HibernateUtil;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,7 +14,7 @@ public class Main {
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-        employee e1 = new employee();
+        Employee e1 = new Employee();
         e1.setAge("20");
         e1.setName("Pratik");
 
@@ -25,7 +24,7 @@ public class Main {
         {
 
             transaction = session.beginTransaction();
-            session.persist(e1);
+            //session.persist(e1);
             transaction.commit();
             System.out.println("Saved Successfully");
 

@@ -2,9 +2,12 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="employee_details")
-public class employee  {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +16,9 @@ public class employee  {
     private String name;
 
     private String age;
+
+    @OneToMany(mappedBy = "e1")
+    private List<Certificates> certificates = new ArrayList<>();
 
     public int getId() {
         return id;
