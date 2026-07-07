@@ -17,8 +17,16 @@ public class Employee {
 
     private String age;
 
-    @OneToMany(mappedBy = "e1")
+    @OneToMany(mappedBy = "e1", cascade = CascadeType.ALL)
     private List<Certificates> certificates = new ArrayList<>();
+
+    public List<Certificates> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificates> certificates) {
+        this.certificates = certificates;
+    }
 
     public int getId() {
         return id;

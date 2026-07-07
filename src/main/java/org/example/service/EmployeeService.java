@@ -7,6 +7,7 @@ import org.example.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 import javax.security.auth.login.CredentialException;
@@ -89,5 +90,26 @@ public class EmployeeService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    // Pagination ---> tells hibernate to fetch these many records, rather than loading entire records into the memory, we divide the millions of records into pages and fetches the page(records within it).
+    public List<Employee> getEntryByPagination(int pageNo, int pageSize)
+    {
+        try
+        {
+            Session session = sessionFactory.openSession();
+            String HQLquery = "FROM Employee";
+            Query<Employee> query = session.createQuery(HQLquery, Employee.class);
+            query.setFirstResult((pageNo-1)*pageSize);
+            query.setMaxResults(pageSize);
+            return query.list();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 }
